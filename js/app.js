@@ -30,8 +30,8 @@ let board_map = [
 
 
 function addBox(className){
-    var board = document.getElementById('board')
-    var box = document.createElement('div')
+    let board = document.getElementById('board')
+    let box = document.createElement('div')
     box.setAttribute('class','box ' + className )
     board.append(box)
 }
@@ -39,6 +39,19 @@ function addBox(className){
 function clearBoard(){
     document.getElementById('board').innerHTML = ""
 }
+
+function draw_board(){
+    clearBoard()
+    for (let i = 0; i < board_map.length; i++){
+        for (let j = 0; j < board_map.length; j++){
+            addBox(board_map[i][j])
+        }
+    }
+}
+
+//function get_random_index(arr)
+
+draw_board()
 
 /*
     1- Using the board map write a draw function that will read throught each value of board map
