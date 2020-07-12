@@ -43,6 +43,8 @@ function clearBoard(){
 function draw_board(){
     clearBoard()
     addObstacles(board_map)
+    addPlayer1(board_map)
+    addPlayer2(board_map)
     for (let i = 0; i < board_map.length; i++){
         for (let j = 0; j < board_map.length; j++){
             addBox(board_map[i][j])
@@ -58,15 +60,47 @@ function addObstacles(arr){
 
     let randomI
     let randomJ
-    for (let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length + 3; i++){
         randomI = Math.floor(Math.random() * arr.length)
-        for (let j = 0; j < arr.length; j++){
+        for (let j = 0; j < arr.length + 3; j++){
              randomJ = Math.floor(Math.random() * arr.length)
         }
         arr[randomI][randomJ] = 'obstacle'
     }
 
-        
+}
+
+function addPlayer1(arr){
+
+    let randomI
+    let randomJ
+    for (let i = 0; i < 1; i++){
+        randomI = Math.floor(Math.random() * arr.length)
+        for (let j = 0; j < 1; j++){
+             randomJ = Math.floor(Math.random() * arr.length)
+        }
+        if (arr[randomI][randomJ] === 'free')
+            arr[randomI][randomJ] = 'player1'
+        else
+            arr[randomI++][randomJ] = 'player1'
+    }
+
+}
+
+function addPlayer2(arr){
+
+    let randomI
+    let randomJ
+    for (let i = 0; i < 1; i++){
+        randomI = Math.floor(Math.random() * arr.length)
+        for (let j = 0; j < 1; j++){
+             randomJ = Math.floor(Math.random() * arr.length)
+        }
+        if (arr[randomI][randomJ] === 'free')
+            arr[randomI][randomJ] = 'player2'
+        else
+            arr[randomI++][randomJ] = 'player2'
+    }
 
 }
 
