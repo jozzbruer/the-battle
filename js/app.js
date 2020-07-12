@@ -42,16 +42,37 @@ function clearBoard(){
 
 function draw_board(){
     clearBoard()
+    addObstacles(board_map)
     for (let i = 0; i < board_map.length; i++){
         for (let j = 0; j < board_map.length; j++){
             addBox(board_map[i][j])
+                        
         }
+        
     }
+    
+   
 }
 
-//function get_random_index(arr)
+function addObstacles(arr){
+
+    let randomI
+    let randomJ
+    for (let i = 0; i < arr.length; i++){
+        randomI = Math.floor(Math.random() * arr.length)
+        for (let j = 0; j < arr.length; j++){
+             randomJ = Math.floor(Math.random() * arr.length)
+        }
+        arr[randomI][randomJ] = 'obstacle'
+    }
+
+        
+
+}
 
 draw_board()
+
+
 
 /*
     1- Using the board map write a draw function that will read throught each value of board map
