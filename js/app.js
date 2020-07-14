@@ -1,4 +1,5 @@
-// document.getElementById('board').innerHTML = ""
+document.addEventListener('DOMContentLoaded', () => {
+    // document.getElementById('board').innerHTML = ""
 // ""
 // var box = document.createElement('div')
 // undefined
@@ -13,6 +14,9 @@
 // board.append(box)
 // undefined
 // board.append(box)
+const rows = 10
+const cols = 10
+
 let board_map = [
     ['free','free','free','free','free','free','free','free','free','free'],
     ['free','free','free','free','free','free','free','free','free','free'],
@@ -26,6 +30,10 @@ let board_map = [
     ['free','free','free','free','free','free','free','free','free','free']
 
 ]
+
+//let board_map = []
+
+let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
 
 
 
@@ -45,24 +53,26 @@ function draw_board(){
     addObstacles(board_map)
     addPlayer1(board_map)
     addPlayer2(board_map)
-    for (let i = 0; i < board_map.length; i++){
-        for (let j = 0; j < board_map.length; j++){
+    for (let i = 0; i < rows; i++){
+        for (let j = 0; j < cols; j++){
             addBox(board_map[i][j])
                         
         }
         
     }
-    
-   
+}
+/* Reset boardmap */
+function addFreeSpaces(){
+
 }
 
 function addObstacles(arr){
 
     let randomI
     let randomJ
-    for (let i = 0; i < arr.length + 3; i++){
+    for (let i = 0; i < arr.length + 2; i++){
         randomI = Math.floor(Math.random() * arr.length)
-        for (let j = 0; j < arr.length + 3; j++){
+        for (let j = 0; j < arr.length + 2; j++){
              randomJ = Math.floor(Math.random() * arr.length)
         }
         arr[randomI][randomJ] = 'obstacle'
@@ -114,3 +124,5 @@ draw_board()
 
     Nested for loop
 */
+
+})
