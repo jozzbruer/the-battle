@@ -1,39 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // document.getElementById('board').innerHTML = ""
-// ""
-// var box = document.createElement('div')
-// undefined
-// box
-// <div>​</div>​
-// box.setAttribute('class','box free')
-// undefined
-// box
-// <div class=​"box free">​</div>​
-// var board = document.getElementById('board')
-// undefined
-// board.append(box)
-// undefined
-// board.append(box)
 const rows = 10
 const cols = 10
 
 const obstacleVarience = 0.12 //12 % of the map are obstacles
 
-let board_map = [
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free'],
-    ['free','free','free','free','free','free','free','free','free','free']
 
-]
-
-//let board_map = []
+let board_map = []
 
 let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
 
@@ -50,21 +21,28 @@ function clearBoard(){
     document.getElementById('board').innerHTML = ""
 }
 
-function draw_board(){
+function draw_board(arr){
     clearBoard()
     addObstacles(board_map)
     addPlayer1(board_map)
     addPlayer2(board_map)
     for (let i = 0; i < rows; i++){
         for (let j = 0; j < cols; j++){
-            addBox(board_map[i][j])
+            addBox(arr[i][j])
                         
         }
         
     }
 }
+
 /* Reset boardmap */
-function addFreeSpaces(){
+function addFreeSpaces(arr){
+    for (let i = 0; i < rows; i++){
+        arr.push([])
+        for (let j = 0; j < cols; j++){  
+            arr[i][j] = 'free'            
+        }
+    }
 
 }
 
@@ -113,16 +91,5 @@ function addPlayer2(arr){
         }
     }
 }
-
-draw_board()
-
-
-
-/*
-    1- Using the board map write a draw function that will read throught each value of board map
-    and use addbox function to insert the appropriate class into the board
-
-    Nested for loop
-*/
-
-})
+ addFreeSpaces(board_map)
+ draw_board(board_map)
