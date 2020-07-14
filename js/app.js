@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const rows = 10
 const cols = 10
 
+const obstacleVarience = 0.12 //12 % of the map are obstacles
+
 let board_map = [
     ['free','free','free','free','free','free','free','free','free','free'],
     ['free','free','free','free','free','free','free','free','free','free'],
@@ -67,51 +69,49 @@ function addFreeSpaces(){
 }
 
 function addObstacles(arr){
-
+    let i = 0
+    const numOfObstacles = obstacleVarience * rows * cols
     let randomI
     let randomJ
-    for (let i = 0; i < arr.length + 2; i++){
-        randomI = Math.floor(Math.random() * arr.length)
-        for (let j = 0; j < arr.length + 2; j++){
-             randomJ = Math.floor(Math.random() * arr.length)
-        }
-        arr[randomI][randomJ] = 'obstacle'
-    }
 
+    while (i < numOfObstacles  ){
+        randomI = Math.floor(Math.random() * rows)
+        randomJ = Math.floor(Math.random() * cols)
+        if (arr[randomI][randomJ] === 'free'){
+            arr[randomI][randomJ] = 'obstacle'
+            i++
+        }
+    }
 }
 
 function addPlayer1(arr){
 
+    let i = 0
     let randomI
     let randomJ
-    for (let i = 0; i < 1; i++){
-        randomI = Math.floor(Math.random() * arr.length)
-        for (let j = 0; j < 1; j++){
-             randomJ = Math.floor(Math.random() * arr.length)
-        }
-        if (arr[randomI][randomJ] === 'free')
+    while (i < 1  ){
+        randomI = Math.floor(Math.random() * rows)
+        randomJ = Math.floor(Math.random() * cols)
+        if (arr[randomI][randomJ] === 'free'){
             arr[randomI][randomJ] = 'player1'
-        else
-            arr[randomI++][randomJ] = 'player1'
+            i++
+        }
     }
-
 }
 
 function addPlayer2(arr){
 
+    let i = 0
     let randomI
     let randomJ
-    for (let i = 0; i < 1; i++){
-        randomI = Math.floor(Math.random() * arr.length)
-        for (let j = 0; j < 1; j++){
-             randomJ = Math.floor(Math.random() * arr.length)
-        }
-        if (arr[randomI][randomJ] === 'free')
+    while (i < 1  ){
+        randomI = Math.floor(Math.random() * rows)
+        randomJ = Math.floor(Math.random() * cols)
+        if (arr[randomI][randomJ] === 'free'){
             arr[randomI][randomJ] = 'player2'
-        else
-            arr[randomI++][randomJ] = 'player2'
+            i++
+        }
     }
-
 }
 
 draw_board()
