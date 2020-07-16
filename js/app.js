@@ -10,18 +10,18 @@ let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun
 
 
 
-function addBox(className){
+const addBox = (className) =>{
     let board = document.getElementById('board')
     let box = document.createElement('div')
     box.setAttribute('class','box ' + className )
     board.append(box)
 }
 
-function clearBoard(){
-    document.getElementById('board').innerHTML = ""
+const clearBoard = () =>{
+   document.getElementById('board').innerHTML = ""
 }
 
-function draw_board(arr){
+const draw_board = (arr) =>{
     clearBoard()
     addObstacles(board_map)
     addPlayer1(board_map)
@@ -36,7 +36,7 @@ function draw_board(arr){
 }
 
 /* Reset boardmap */
-function addFreeSpaces(arr){
+const addFreeSpaces = (arr) =>{
     for (let i = 0; i < rows; i++){
         arr.push([])
         for (let j = 0; j < cols; j++){  
@@ -46,7 +46,7 @@ function addFreeSpaces(arr){
 
 }
 
-function addObstacles(arr){
+const addObstacles = (arr) =>{
     let i = 0
     const numOfObstacles = obstacleVarience * rows * cols
     let randomI
@@ -62,7 +62,7 @@ function addObstacles(arr){
     }
 }
 
-function addPlayer1(arr){
+const addPlayer1 = (arr) =>{
 
     let i = 0
     let randomI
@@ -77,7 +77,7 @@ function addPlayer1(arr){
     }
 }
 
-function addPlayer2(arr){
+const addPlayer2 = (arr) =>{
 
     let i = 0
     let randomI
