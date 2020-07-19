@@ -50,3 +50,29 @@ body{
 ul{
     list-style-type: none;
 }
+
+/* ALL THE GUN */
+.hand_gun{
+    content: url('/game_assets/HandWeapon1.png');
+    background-image: url("/game_assets/grass.png");
+}
+
+.revolver_38{
+    content: url('/game_assets/Revolver1.png');
+    background-image: url("/game_assets/grass.png");
+}
+.revolver_22{
+    content: url('/game_assets/Revolver2.png');
+    background-image: url("/game_assets/grass.png");
+}
+
+.shot_gun_cross{
+    content: url('/game_assets/Shotgun1.png');
+    background-image: url("/game_assets/grass.png");
+}
+
+
+.shot_gun_simple{
+    content: url('/game_assets/Shotgun2.png');
+    background-image: url("/game_assets/grass.png");
+}

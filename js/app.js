@@ -8,8 +8,6 @@ let board_map = []
 
 let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
 
-
-
 const addBox = (className) =>{
     let board = document.getElementById('board')
     let box = document.createElement('div')
@@ -24,8 +22,9 @@ const clearBoard = () =>{
 const draw_board = (arr) =>{
     clearBoard()
     addObstacles(board_map)
-    addPlayer1(board_map)
-    addPlayer2(board_map)
+    addPlayers(board_map, 'player1')
+    addPlayers(board_map, 'player2')
+    addGuns(board_map, guns)
     for (let i = 0; i < rows; i++){
         for (let j = 0; j < cols; j++){
             addBox(arr[i][j])
@@ -62,7 +61,7 @@ const addObstacles = (arr) =>{
     }
 }
 
-const addPlayer1 = (arr) =>{
+const addPlayers = (arr, className) =>{
 
     let i = 0
     let randomI
@@ -71,25 +70,45 @@ const addPlayer1 = (arr) =>{
         randomI = Math.floor(Math.random() * rows)
         randomJ = Math.floor(Math.random() * cols)
         if (arr[randomI][randomJ] === 'free'){
-            arr[randomI][randomJ] = 'player1'
+            arr[randomI][randomJ] = className
             i++
         }
     }
 }
 
-const addPlayer2 = (arr) =>{
+// const addPlayer2 = (arr) =>{
+
+//     let i = 0
+//     let randomI
+//     let randomJ
+//     while (i < 1  ){
+//         randomI = Math.floor(Math.random() * rows)
+//         randomJ = Math.floor(Math.random() * cols)
+//         if (arr[randomI][randomJ] === 'free'){
+//             arr[randomI][randomJ] = 'player2'
+//             i++
+//         }
+//     }
+// }
+
+
+const addGuns = (arr1, arr2) =>{
 
     let i = 0
+    let k = 0
     let randomI
     let randomJ
-    while (i < 1  ){
+    while (i < arr2.length  ){
         randomI = Math.floor(Math.random() * rows)
         randomJ = Math.floor(Math.random() * cols)
-        if (arr[randomI][randomJ] === 'free'){
-            arr[randomI][randomJ] = 'player2'
+        if (arr1[randomI][randomJ] === 'free'){
+            arr1[randomI][randomJ] = arr2[k]
             i++
+            k++
         }
     }
 }
  addFreeSpaces(board_map)
  draw_board(board_map)
+
+
