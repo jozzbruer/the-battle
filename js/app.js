@@ -1,12 +1,30 @@
+import  Player   from './player.class.js'
+import Gun from "./gun.class.js"
+
 const rows = 10
 const cols = 10
 
 const obstacleVarience = 0.12 //12 % of the map are obstacles
+const knife = new Gun('knife', 2)
+const max_health = 100
+const player1 = new Player('player1',knife, max_health)
+const player2 = new Player('player2',knife, max_health)
+/*
+    Create guns constant object
+*/
 
+const hand_gun = new Gun('hand_gun',10)
+const revolver_38 = new Gun('revolver_38',10)
+const revolver_22 = new Gun('revolver_22',10)
+const shot_gun_cross = new Gun('shot_gun_cross',10)
+const shot_gun_simple = new Gun('shot_gun_simple',10)
+
+const players = [player1,player2]
+const guns = [hand_gun,revolver_22, revolver_38,shot_gun_cross,shot_gun_simple]
 
 let board_map = []
 
-let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
+//let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
 
 const addBox = (className) =>{
     let board = document.getElementById('board')
@@ -19,33 +37,36 @@ const clearBoard = () =>{
    document.getElementById('board').innerHTML = ""
 }
 
-const draw_board = (arr) =>{
+const draw = () =>{
     clearBoard()
-    addObstacles(board_map)
-    addPlayers(board_map, 'player1')
-    addPlayers(board_map, 'player2')
-    addGuns(board_map, guns)
     for (let i = 0; i < rows; i++){
         for (let j = 0; j < cols; j++){
-            addBox(arr[i][j])
-                        
+            addBox(board_map[i][j])              
         }
         
     }
 }
 
+const generateBoard = () =>{
+    board_map = []
+    addFreeSpaces()
+    addObstacles()
+    addPlayers()
+    addGuns(guns)
+}
+
 /* Reset boardmap */
-const addFreeSpaces = (arr) =>{
+const addFreeSpaces = () =>{
     for (let i = 0; i < rows; i++){
-        arr.push([])
+        board_map.push([])
         for (let j = 0; j < cols; j++){  
-            arr[i][j] = 'free'            
+            board_map[i][j] = 'free'            
         }
     }
 
 }
 
-const addObstacles = (arr) =>{
+const addObstacles = () =>{
     let i = 0
     const numOfObstacles = obstacleVarience * rows * cols
     let randomI
@@ -54,23 +75,24 @@ const addObstacles = (arr) =>{
     while (i < numOfObstacles  ){
         randomI = Math.floor(Math.random() * rows)
         randomJ = Math.floor(Math.random() * cols)
-        if (arr[randomI][randomJ] === 'free'){
-            arr[randomI][randomJ] = 'obstacle'
+        if (board_map[randomI][randomJ] === 'free'){
+            board_map[randomI][randomJ] = 'obstacle'
             i++
         }
     }
 }
 
-const addPlayers = (arr, className) =>{
+const addPlayers = () =>{
 
     let i = 0
     let randomI
     let randomJ
-    while (i < 1  ){
+    while (i < players.length  ){
         randomI = Math.floor(Math.random() * rows)
         randomJ = Math.floor(Math.random() * cols)
-        if (arr[randomI][randomJ] === 'free'){
-            arr[randomI][randomJ] = className
+        if (board_map[randomI][randomJ] === 'free'){
+            board_map[randomI][randomJ] = players[i].name
+            players[i].setPosition(randomI,randomJ)
             i++
         }
     }
@@ -92,23 +114,19 @@ const addPlayers = (arr, className) =>{
 // }
 
 
-const addGuns = (arr1, arr2) =>{
+const addGuns = () =>{
 
     let i = 0
-    let k = 0
     let randomI
     let randomJ
-    while (i < arr2.length  ){
+    while (i < guns.length  ){
         randomI = Math.floor(Math.random() * rows)
         randomJ = Math.floor(Math.random() * cols)
-        if (arr1[randomI][randomJ] === 'free'){
-            arr1[randomI][randomJ] = arr2[k]
+        if (board_map[randomI][randomJ] === 'free'){
+            board_map[randomI][randomJ] = guns[i].name
             i++
-            k++
         }
     }
 }
- addFreeSpaces(board_map)
- draw_board(board_map)
-
-
+ generateBoard()
+ draw()
