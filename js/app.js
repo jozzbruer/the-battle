@@ -1,3 +1,10 @@
+/*
+** Project Name: Board Game OPC Front-End Developer Path 
+** Author: Joz-Bruer Quince
+** Started Date: July 01 2020
+** Realease Date:
+** Licence: MIT
+*/
 import  Player   from './player.class.js'
 import Gun from "./gun.class.js"
 
@@ -97,21 +104,6 @@ const addPlayers = () =>{
         }
     }
 }
-
-// const addPlayer2 = (arr) =>{
-
-//     let i = 0
-//     let randomI
-//     let randomJ
-//     while (i < 1  ){
-//         randomI = Math.floor(Math.random() * rows)
-//         randomJ = Math.floor(Math.random() * cols)
-//         if (arr[randomI][randomJ] === 'free'){
-//             arr[randomI][randomJ] = 'player2'
-//             i++
-//         }
-//     }
-// }
 
 
 const addGuns = () =>{
