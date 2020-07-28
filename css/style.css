@@ -6,8 +6,8 @@ body{
 .board{
     display: grid;
     grid-template-columns: repeat(10,1fr);
-    width: 80%;
-    height: 937px;
+    width: 720px;
+    height: 720px;
 }
 
 .box{
@@ -53,8 +53,11 @@ ul{
 
 /* ALL THE GUN */
 .hand_gun{
-    content: url('/game_assets/HandWeapon1.png');
-    background-image: url("/game_assets/grass.png");
+    
+    background-image: url('/game_assets/HandWeapon1.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 
 .revolver_38{

@@ -16,6 +16,10 @@ const knife = new Gun('knife', 2)
 const max_health = 100
 const player1 = new Player('player1',knife, max_health)
 const player2 = new Player('player2',knife, max_health)
+
+let currentPlayer = player1
+let currentMoves = 0
+const maxMoves = 3
 /*
     Create guns constant object
 */
@@ -120,5 +124,30 @@ const addGuns = () =>{
         }
     }
 }
+
+const move = (newX, newY) =>{
+    // Check if newX and newY are within 0 to rows and 0 to cols
+    if (board_map[newX][newY] === 'free'){
+        let [oldX, oldY] = [currentPlayer.x, currentPlayer.y]
+        board_map[oldX][oldY] = 'free'
+        board_map[newX][newY] = currentPlayer.name
+        currentPlayer.setPosition(newX,newY)
+        draw()
+    }
+}
+
+const handleKey = (e) => {
+    e.preventDefault()
+    console.log(e.which)
+
+    switch (e.which){
+        case 38: 
+            move(currentPlayer.x - 1, currentPlayer.y)
+            break
+    }
+}
+
  generateBoard()
  draw()
+ 
+ document.addEventListener('keydown', handleKey)
