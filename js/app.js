@@ -24,14 +24,14 @@ const maxMoves = 3
     Create guns constant object
 */
 
-const hand_gun = new Gun('hand_gun',10)
-const revolver_38 = new Gun('revolver_38',10)
-const revolver_22 = new Gun('revolver_22',10)
-const shot_gun_cross = new Gun('shot_gun_cross',10)
-const shot_gun_simple = new Gun('shot_gun_simple',10)
+const pistol = new Gun('pistol',10)
+const revolver = new Gun('revolver',10)
+const sniper = new Gun('sniper',10)
+const shotgun = new Gun('shotgun',10)
+const assaultriffle = new Gun('assaultriffle',10)
 
 const players = [player1,player2]
-const guns = [hand_gun,revolver_22, revolver_38,shot_gun_cross,shot_gun_simple]
+const guns = [pistol,sniper, revolver,shotgun,assaultriffle]
 
 let board_map = []
 

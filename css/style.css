@@ -6,8 +6,8 @@ body{
 .board{
     display: grid;
     grid-template-columns: repeat(10,1fr);
-    width: 720px;
-    height: 720px;
+    width: 1550px;
+    height: 937px;
 }
 
 .box{
@@ -19,14 +19,23 @@ body{
 }
 
 .obstacle{
-    background: red;
+    background-image: url('/game_assets/obstacles.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 .player1{
-    background: linear-gradient(blue, black);
+    background-image: url('/game_assets/adventurer_swim1.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 
 .player2{
-    background: linear-gradient(yellow, white);
+    background-image: url('/game_assets/soldier_swim2.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 
 .score-board{
@@ -52,30 +61,37 @@ ul{
 }
 
 /* ALL THE GUN */
-.hand_gun{
-    
-    background-image: url('/game_assets/HandWeapon1.png'),url("/game_assets/grass.png");
+.pistol{
+    background-image: url('/game_assets/pistol2.png'),url("/game_assets/grass.png");
     background-repeat: no-repeat;
     background-size: contain, auto;
     background-position: center,center;
 }
 
-.revolver_38{
-    content: url('/game_assets/Revolver1.png');
-    background-image: url("/game_assets/grass.png");
+.revolver{
+    background-image: url('/game_assets/revolver2.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
-.revolver_22{
-    content: url('/game_assets/Revolver2.png');
-    background-image: url("/game_assets/grass.png");
+.sniper{
+    background-image: url('/game_assets/sniper2.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 
-.shot_gun_cross{
-    content: url('/game_assets/Shotgun1.png');
-    background-image: url("/game_assets/grass.png");
+.shotgun{
+    background-image: url('/game_assets/shotgun.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
 
 
-.shot_gun_simple{
-    content: url('/game_assets/Shotgun2.png');
-    background-image: url("/game_assets/grass.png");
+.assaultriffle{
+    background-image: url('/game_assets/assaultrifle.png'),url("/game_assets/grass.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center,center;
 }
