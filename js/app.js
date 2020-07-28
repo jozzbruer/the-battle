@@ -5,17 +5,16 @@
 ** Realease Date:
 ** Licence: MIT
 */
-import  Player   from './player.class.js'
-import Gun from "./gun.class.js"
+import  {player1, player2}   from './player.class.js'
+import  {pistol,revolver,sniper,shotgun,assaultriffle} from "./gun.class.js"
 
 const rows = 10
 const cols = 10
 
 const obstacleVarience = 0.12 //12 % of the map are obstacles
-const knife = new Gun('knife', 2)
-const max_health = 100
-const player1 = new Player('player1',knife, max_health)
-const player2 = new Player('player2',knife, max_health)
+//const knife = new Gun('knife', 2)
+
+
 
 let currentPlayer = player1
 let currentMoves = 0
@@ -24,11 +23,6 @@ const maxMoves = 3
     Create guns constant object
 */
 
-const pistol = new Gun('pistol',10)
-const revolver = new Gun('revolver',10)
-const sniper = new Gun('sniper',10)
-const shotgun = new Gun('shotgun',10)
-const assaultriffle = new Gun('assaultriffle',10)
 
 const players = [player1,player2]
 const guns = [pistol,sniper, revolver,shotgun,assaultriffle]
