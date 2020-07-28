@@ -29,7 +29,6 @@ const guns = [pistol,sniper, revolver,shotgun,assaultriffle]
 
 let board_map = []
 
-//let guns = ['hand_gun', 'revolver_38', 'revolver_22','shot_gun_cross', 'shot_gun_simple']
 
 const addBox = (className) =>{
     let board = document.getElementById('board')
@@ -132,11 +131,19 @@ const move = (newX, newY) =>{
 
 const handleKey = (e) => {
     e.preventDefault()
-    console.log(e.which)
-
+    
     switch (e.which){
-        case 38: 
+        case 37: 
+        move(currentPlayer.x, currentPlayer.y - 1)
+        break
+        case 38:
             move(currentPlayer.x - 1, currentPlayer.y)
+            break
+        case 39:
+            move(currentPlayer.x , currentPlayer.y + 1)
+            break
+        case 40:
+            move(currentPlayer.x + 1, currentPlayer.y)
             break
     }
 }
