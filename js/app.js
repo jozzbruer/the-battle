@@ -13,8 +13,8 @@ import  {pistol,revolver,sniper,shotgun,assaultriffle} from "./gun.class.js"
 **
 */
 
-const player1SB = document.querySelectorAll('#player1')
-let p = [player1.name,player1.gun['name'],player1.life, player1.gun['damage']]
+// const player1SB = document.querySelectorAll('#player1')
+// let p = [player1.name,player1.gun['name'],player1.life, player1.gun['damage']]
 
 
 
@@ -33,7 +33,7 @@ const players = [player1,player2]
 const guns = [pistol,sniper, revolver,shotgun,assaultriffle]
 
 
-let currentPlayer = players[1]
+let currentPlayer = players[0]
 let currentMoves = 0
 const maxMoves = 3
 
@@ -134,15 +134,35 @@ const addGuns = () =>{
 
 const move = (newX, newY) =>{
     // Check if newX and newY are within 0 to rows and 0 to cols
-    if (boardMap[newX][newY] === 'free'){
-        let [oldX, oldY] = [currentPlayer.x, currentPlayer.y]
-        boardMap[oldX][oldY] = 'free'
-        boardMap[newX][newY] = currentPlayer.name
-        currentPlayer.setPosition(newX,newY)
-        draw()
+    if (newX >= 0 && newX < rows && newY >= 0 && newY < cols){
+        if (boardMap[newX][newY] === 'free'){
+            let [oldX, oldY] = [currentPlayer.x, currentPlayer.y]
+            boardMap[oldX][oldY] = 'free'
+            boardMap[newX][newY] = currentPlayer.name
+            currentPlayer.setPosition(newX,newY)
+            draw()
+            currentMoves++
+            checkMaxMoves()
+        }
     }
+    
 }
 
+const checkMaxMoves = () =>{
+    if (currentMoves >=  maxMoves){
+        switchPlayer()
+    }
+} 
+
+const switchPlayer = () => {
+    if (currentPlayer.name == 'player1'){
+        currentPlayer = players[1]
+    }
+    else{
+        currentPlayer = players[0]
+    }
+    currentMoves = 0
+}
 const handleKey = (e) => {
     e.preventDefault()
     
