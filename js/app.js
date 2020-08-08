@@ -48,32 +48,7 @@ let currentPlayer = players[0]
 let currentMoves = 0
 const maxMoves = 3
 
-
-
-
-
-let boardMap = []
-
-
-const addBox = (className) => {
-    let board = document.getElementById('board')
-    let box = document.createElement('div')
-    box.setAttribute('class', 'box ' + className)
-    board.append(box)
-}
-
-const clearBoard = () => {
-    document.getElementById('board').innerHTML = ""
-}
-
-const draw = () => {
-    clearBoard()
-    for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-            addBox(boardMap[i][j])
-        }
-
-    }
+const resultBoard = () => {
     let player1arr = [players[0].name, players[0].gun['name'], players[0].life, players[0].gun['damage']]
     let player2arr = [players[1].name, players[1].gun['name'], players[1].life, players[1].gun['damage']]
     let i = 0
@@ -92,12 +67,43 @@ const draw = () => {
     });
 }
 
+
+
+let boardMap = []
+
+
+const addBox = (className) => {
+    let board = document.getElementById('board')
+    let box = document.createElement('div')
+    box.setAttribute('class', 'box ' + className)
+    board.append(box)
+
+}
+
+const clearBoard = () => {
+    document.getElementById('board').innerHTML = ""
+}
+
+const draw = () => {
+    clearBoard()
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            addBox(boardMap[i][j])
+        }
+
+    }
+    resultBoard()
+
+}
+
+
 const generateBoard = () => {
     boardMap = []
     addFreeSpaces()
     addObstacles()
     addPlayers()
     addGuns(guns)
+
 }
 
 /* Reset boardmap */
@@ -141,6 +147,7 @@ const addPlayers = () => {
             i++
         }
     }
+
 }
 
 
@@ -159,6 +166,36 @@ const addGuns = () => {
     }
 }
 
+const addnewGun = (position) => {
+    let newgun
+    let newdame
+    switch (position) {
+        case 'pistol':
+            newgun = guns[0]['name']
+            newdame = guns[0]['damage']
+            break
+        case 'sniper':
+            newgun = guns[1]['name']
+            newdame = guns[1]['damage']
+            break
+        case 'revolver':
+            newgun = guns[2]['name']
+            newdame = guns[2]['damage']
+            break;
+        case 'shotgun':
+            newgun = guns[3]['name']
+            newdame = guns[3]['damage']
+            break;
+        case 'assaultriffle':
+            newgun = guns[4]['name']
+            newdame = guns[4]['damage']
+            break;
+    }
+
+    return [newgun, newdame]
+
+}
+
 const move = (newX, newY) => {
     // Check if newX and newY are within 0 to rows and 0 to cols
     if (newX >= 0 && newX < rows && newY >= 0 && newY < cols) {
@@ -168,6 +205,8 @@ const move = (newX, newY) => {
             boardMap[newX][newY] = currentPlayer.name
             currentPlayer.setPosition(newX, newY)
             draw()
+            currentMoves++
+            checkMaxMoves()
 
 
         } else if (boardMap[newX][newY] === 'pistol' || boardMap[newX][newY] === 'sniper' || boardMap[newX][newY] === 'revolver' ||
@@ -179,8 +218,11 @@ const move = (newX, newY) => {
                 boardMap[oldX][oldY] = 'free'
                 boardMap[newX][newY] = currentPlayer.name
                 currentPlayer.setPosition(newX, newY)
-                currentPlayer.gun['name'] = newGun
+                currentPlayer.gun['name'] = addnewGun(newGun)[0]
+                currentPlayer.gun['damage'] = addnewGun(newGun)[1]
                 draw()
+                currentMoves++
+                checkMaxMoves()
 
 
                 // console.log(newGun)
@@ -188,8 +230,8 @@ const move = (newX, newY) => {
             }
         }
 
-        currentMoves++
-        checkMaxMoves()
+        console.log(currentMoves)
+
     }
 
 }
