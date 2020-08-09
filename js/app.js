@@ -60,12 +60,12 @@ const resultBoard = () => {
     let i = 0;
     let j = 0;
 
-    player1SB.forEach((element) => {
+    player1SB.forEach(element => {
         element.innerText = player1arr[i];
         i++;
     });
 
-    player2SB.forEach((element) => {
+    player2SB.forEach(element => {
         element.innerText = player2arr[j];
         j++;
     });
@@ -228,15 +228,12 @@ const move = (newX, newY) => {
                 draw()
                 currentMoves++
                 checkMaxMoves()
-                // console.log(oldGun.toString());
+
             }
-            // else if (currentPlayer.gun['name'] === 'pistol' || currentPlayer.gun['name'] === 'sniper' || currentPlayer.gun['name'] === 'revolver' ||
-            //     currentPlayer.gun['name'] === 'assaultriffle' || currentPlayer.gun['name'] === 'shotgun') {
-            //     let [oldX, oldY] = [currentPlayer.x, currentPlayer.y]
-            // }
+
         }
 
-        // console.log(currentMoves);
+
     }
 };
 
@@ -260,11 +257,7 @@ const switchPlayer = () => {
     currentMoves = 0;
 };
 
-// const pickupNewGun = () =>{
-//     if (currentPlayer.gun['name'] === 'knife'){
-//         console.log('Knife is the gun', currentPlayer.name)
-//     }
-// }
+
 
 const handleKey = (e) => {
     e.preventDefault();
