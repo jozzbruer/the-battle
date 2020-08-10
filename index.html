@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,115 +8,132 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Board Game</title>
 </head>
+
 <body>
-    <div id="board" class="board">
-        <!-- <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
+    <div class="main">
+        <div id="board" class="board">
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
 
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box player2"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
 
-        <div class="box obstacle"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
 
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box obstacle"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        
-        <div class="box player1"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div>
-        <div class="box free"></div> -->
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box player2"></div>
 
-    </div>
-    <div class="score-board">
-        <div class="score-board-text">
-            <ul>
-                <li>Name: <span id="player1"></span></li>
-                <li>Gun: <span id="player1"></span></li>
-                <li>Life: <span id="player1"></span></li>
-                <li>Gun Damage:<span id="player1"></span> </li>
-            </ul>
+            <div class="box obstacle"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box obstacle"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+
+            <div class="box player1"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+            <div class="box free"></div>
+
         </div>
-        <div class="score-board-text">
-            <ul>
-                <li>Name: <span id="player2"></span></li>
-                <li>Gun: <span id="player2"></span></li>
-                <li>Life: <span id="player2"></span></li>
-                <li>Gun Damage:<span id="player2"></span> </li>
-            </ul>
+
+        <div class="score-board">
+            <div class="score-board-text">
+                <ul>
+                    <li>Name: <span id="player1"></span></li>
+                    <li>Gun: <span id="player1"></span></li>
+                    <li>Life: <span id="player1"></span></li>
+                    <li>Gun Damage:<span id="player1"></span> </li>
+                </ul>
+            </div>
+            <div class="score-board-text">
+                <ul>
+                    <li>Name: <span id="player2"></span></li>
+                    <li>Gun: <span id="player2"></span></li>
+                    <li>Life: <span id="player2"></span></li>
+                    <li>Gun Damage:<span id="player2"></span> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <button id="open">click me here</button>
+
+    <div class="modal-container" id="modal_container">
+        <div class="modal">
+            <h1>Modal is here</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni doloremque fugiat laboriosam animi,
+                exercitationem dolorem? Tempora fuga magnam eligendi nam.</p>
+
+            <button id="close">close me</button>
         </div>
     </div>
 </body>
-<script type="module"src="js/app.js"></script>
+<script type="module" src="js/app.js"></script>
+
 </html>
