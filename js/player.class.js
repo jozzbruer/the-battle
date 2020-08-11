@@ -7,6 +7,8 @@ class Player {
         this.name = name
         this.gun = gun
         this.life = life
+        this.alive = true
+        this.defence = false
         this.x = -1
         this.y = -1
     }
@@ -15,6 +17,21 @@ class Player {
         this.x = x
         this.y = y
     }
+
+    takeLife = (damage) => {
+        if (this.defence) {
+            this.life = this.life - (damage / 2)
+            this.defence = false
+        } else {
+            this.life = this.life - damage
+        }
+
+        if (this.life <= 0) {
+            this.alive = false
+        }
+    }
+
+
 }
 
 const max_health = 100

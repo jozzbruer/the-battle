@@ -49,15 +49,15 @@ const maxMoves = 3;
 const resultBoard = () => {
     let player1arr = [
         players[0].name,
-        players[0].gun["name"],
+        players[0].gun.name,
         players[0].life,
-        players[0].gun["damage"],
+        players[0].gun.damage,
     ];
     let player2arr = [
         players[1].name,
-        players[1].gun["name"],
+        players[1].gun.name,
         players[1].life,
-        players[1].gun["damage"],
+        players[1].gun.damage,
     ];
     let i = 0;
     let j = 0;
@@ -160,34 +160,6 @@ const addGuns = () => {
     }
 };
 
-const addnewGun = (position) => {
-    let newgun;
-    let newdame;
-    switch (position) {
-        case "pistol":
-            newgun = guns[0]["name"];
-            newdame = guns[0]["damage"];
-            break;
-        case "sniper":
-            newgun = guns[1]["name"];
-            newdame = guns[1]["damage"];
-            break;
-        case "revolver":
-            newgun = guns[2]["name"];
-            newdame = guns[2]["damage"];
-            break;
-        case "shotgun":
-            newgun = guns[3]["name"];
-            newdame = guns[3]["damage"];
-            break;
-        case "assaultriffle":
-            newgun = guns[4]["name"];
-            newdame = guns[4]["damage"];
-            break;
-    }
-
-    return [newgun, newdame];
-};
 
 const move = (newX, newY) => {
     // Check if newX and newY are within 0 to rows and 0 to cols
@@ -208,34 +180,22 @@ const move = (newX, newY) => {
             boardMap[newX][newY] === "shotgun"
         ) {
             // Check the players gun
-            let newGun = boardMap[newX][newY];
-            if (currentPlayer.gun["name"] === "knife") {
-                let [oldX, oldY] = [currentPlayer.x, currentPlayer.y];
+            let newGunName = boardMap[newX][newY];
+            let newGun = guns.filter(gun => gun.name === newGunName)[0]
+            let [oldX, oldY] = [currentPlayer.x, currentPlayer.y];
+            if (currentPlayer.gun.name === "knife") {
                 boardMap[oldX][oldY] = "free";
-                boardMap[newX][newY] = currentPlayer.name;
-                currentPlayer.setPosition(newX, newY);
-                currentPlayer.gun["name"] = addnewGun(newGun)[0];
-                currentPlayer.gun["damage"] = addnewGun(newGun)[1];
-                draw();
-                currentMoves++;
-                checkMaxMoves();
             } else {
-                let oldGun = currentPlayer.gun["name"];
-                let [oldX, oldY] = [currentPlayer.x, currentPlayer.y]
-                boardMap[oldX][oldY] = oldGun.toString()
-                boardMap[newX][newY] = currentPlayer.name
-                currentPlayer.setPosition(newX, newY)
-                currentPlayer.gun['name'] = addnewGun(newGun)[0]
-                currentPlayer.gun['damage'] = addnewGun(newGun)[1]
-                draw()
-                currentMoves++
-                checkMaxMoves()
-
+                let oldGun = currentPlayer.gun;
+                boardMap[oldX][oldY] = oldGun.name
             }
-
+            boardMap[newX][newY] = currentPlayer.name;
+            currentPlayer.setPosition(newX, newY);
+            currentPlayer.gun = newGun;
+            draw();
+            currentMoves++;
+            checkMaxMoves();
         }
-
-
     }
 };
 
@@ -259,6 +219,9 @@ const switchPlayer = () => {
     currentMoves = 0;
 };
 
+// const checkBattleCondition = () => {
+
+// }
 
 
 const handleKey = (e) => {
