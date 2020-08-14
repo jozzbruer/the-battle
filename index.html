@@ -12,7 +12,7 @@
 <body>
     <div class="main">
         <div id="board" class="board">
-            <div class="box free"></div>
+            <!-- <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div>
@@ -98,7 +98,7 @@
             <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div>
-            <div class="box free"></div>
+            <div class="box free"></div> -->
 
         </div>
 
@@ -126,14 +126,50 @@
 
     <div class="modal-container" id="modal_container">
         <div class="modal">
-            <h1>Modal is here</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni doloremque fugiat laboriosam animi,
-                exercitationem dolorem? Tempora fuga magnam eligendi nam.</p>
+            <button id="close"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <div class="player-jauge">
+                <div class="progress">
+                    <div class="bar" style="width:100%">
+                        <p class="playername">Player 1</p>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="bar" style="width:100%">
+                        <p class="playername">Player 2</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gunname">
+                <p>Gun Name: <span id="player1Modal"></span></p>
+                <p>Gun Name: <span id="player2Modal"></span></p>
+            </div>
 
-            <button id="close">close me</button>
+
+            <div class="playersbox">
+                <div class="boxp1">
+                    <div class="p1">
+                        player
+                    </div>
+                    <div class="pbutton1">
+                        <button class="attack">Attack</button>
+                        <button class="deffence">Deffence</button>
+                    </div>
+                </div>
+
+                <div class="boxp2">
+                    <div class="p1">
+                        player
+                    </div>
+                    <div class="pbutton1">
+                        <button class="attack">Attack</button>
+                        <button class="deffence">Deffence</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+<script src="https://use.fontawesome.com/31bf896b0b.js"></script>
 <script type="module" src="js/app.js"></script>
 
 </html>

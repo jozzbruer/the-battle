@@ -27,8 +27,10 @@ import {
 const scoreBoard = document.querySelectorAll('.score-board-text')
 scoreBoard[0].classList.add('selected')
 
-const player1SB = document.querySelectorAll("#player1");
-const player2SB = document.querySelectorAll("#player2");
+const player1SB = document.querySelectorAll("#player1")
+const player2SB = document.querySelectorAll("#player2")
+const player1Modal = document.querySelector("#player1Modal")
+const player2Modal = document.querySelector("#player2Modal")
 
 const rows = 10;
 const cols = 10;
@@ -71,6 +73,8 @@ const resultBoard = () => {
         element.innerText = player2arr[j];
         j++;
     });
+    player1Modal.innerText = players[0].gun.name
+    player2Modal.innerText = players[1].gun.name
 };
 
 let boardMap = [];
