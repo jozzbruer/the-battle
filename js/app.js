@@ -174,6 +174,7 @@ const move = (newX, newY) => {
             boardMap[newX][newY] = currentPlayer.name;
             currentPlayer.setPosition(newX, newY);
             draw();
+            checkBattleMode()
             currentMoves++;
             checkMaxMoves();
         } else if (
@@ -197,9 +198,11 @@ const move = (newX, newY) => {
             currentPlayer.setPosition(newX, newY);
             currentPlayer.gun = newGun;
             draw();
+            checkBattleMode()
             currentMoves++;
             checkMaxMoves();
         }
+        // checkBattleCondition()
     }
 };
 
@@ -223,9 +226,23 @@ const switchPlayer = () => {
     currentMoves = 0;
 };
 
-// const checkBattleCondition = () => {
+const checkBattleMode = () => {
+    let nextPlayer
+    if (currentPlayer.name === "player1")
+        nextPlayer = players[1]
+    else
+        nextPlayer = players[0]
 
-// }
+    if (
+        boardMap[currentPlayer.x + 1][currentPlayer.y] === nextPlayer.name ||
+        boardMap[currentPlayer.x - 1][currentPlayer.y] === nextPlayer.name ||
+        boardMap[currentPlayer.x][currentPlayer.y + 1] === nextPlayer.name ||
+        boardMap[currentPlayer.x][currentPlayer.y - 1] === nextPlayer.name) {
+
+        modalContainer.classList.add('show')
+        console.log('No battle mode is here')
+    }
+}
 
 
 const handleKey = (e) => {
@@ -263,9 +280,9 @@ const modalContainer = document.getElementById('modal_container')
 const close = document.getElementById('close')
 
 
-open.addEventListener('click', () => {
-    modalContainer.classList.add('show')
-})
+// open.addEventListener('click', () => {
+//     modalContainer.classList.add('show')
+// })
 close.addEventListener('click', () => {
     modalContainer.classList.remove('show')
 })
