@@ -174,9 +174,13 @@ const move = (newX, newY) => {
             boardMap[newX][newY] = currentPlayer.name;
             currentPlayer.setPosition(newX, newY);
             draw();
-            checkBattleMode()
-            currentMoves++;
-            checkMaxMoves();
+            if (checkBattleMode() == true) {
+                showBattleScreen()
+            } else {
+                currentMoves++;
+                checkMaxMoves();
+            }
+
         } else if (
             boardMap[newX][newY] === "pistol" ||
             boardMap[newX][newY] === "sniper" ||
@@ -198,9 +202,12 @@ const move = (newX, newY) => {
             currentPlayer.setPosition(newX, newY);
             currentPlayer.gun = newGun;
             draw();
-            checkBattleMode()
-            currentMoves++;
-            checkMaxMoves();
+            if (checkBattleMode() == true) {
+                showBattleScreen()
+            } else {
+                currentMoves++;
+                checkMaxMoves();
+            }
         }
         // checkBattleCondition()
     }
@@ -227,11 +234,7 @@ const switchPlayer = () => {
 };
 
 const checkBattleMode = () => {
-    let nextPlayer
-    if (currentPlayer.name === "player1")
-        nextPlayer = players[1]
-    else
-        nextPlayer = players[0]
+    let nextPlayer = getOtherPlayer()
 
     if (
         boardMap[currentPlayer.x + 1][currentPlayer.y] === nextPlayer.name ||
@@ -239,11 +242,57 @@ const checkBattleMode = () => {
         boardMap[currentPlayer.x][currentPlayer.y + 1] === nextPlayer.name ||
         boardMap[currentPlayer.x][currentPlayer.y - 1] === nextPlayer.name) {
 
-        modalContainer.classList.add('show')
-        console.log('No battle mode is here')
+        //  disable the keypress event 
+        // modalContainer.classList.add('show')
+        return true
+    }
+
+    return false
+}
+
+
+const showBattleScreen = () => {
+    //disable key press event
+    enableDisableButtons()
+    modalContainer.classList.add('show')
+}
+const getOtherPlayer = () => {
+    if (currentPlayer.name === "player1")
+        return players[1]
+    else
+        return players[0]
+}
+const enableDisableButtons = () => {
+    if (currentPlayer.name === 'player1') {
+        document.getElementById('attack1').setAttribute('disabled', false)
+        document.getElementById('attack2').setAttribute('disabled', true)
+        document.getElementById('deffence1').setAttribute('disabled', false)
+        document.getElementById('deffence2').setAttribute('disabled', true)
+    } else {
+        document.getElementById('attack2').setAttribute('disabled', false)
+        document.getElementById('attack1').setAttribute('disabled', true)
+        document.getElementById('deffence2').setAttribute('disabled', false)
+        document.getElementById('deffence1').setAttribute('disabled', true)
     }
 }
 
+const attack = () => {
+    let otherPlayer = getOtherPlayer()
+    otherPlayer.takeLife(currentPlayer.gun.damage)
+    if (otherPlayer.alive) {
+        switchPlayer()
+        enableDisableButtons()
+    } else {
+        // Hide battle modal, show the game over modal
+        console.log('Game over')
+    }
+}
+
+const defend = () => {
+    currentPlayer.defence = true
+    switchPlayer()
+    enableDisableButtons()
+}
 
 const handleKey = (e) => {
     e.preventDefault();
