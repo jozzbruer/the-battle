@@ -5,7 +5,10 @@
  ** Realease Date:
  ** Licence: MIT
  */
-import { player1, player2 } from "./player.class.js";
+import {
+  player1,
+  player2
+} from "./player.class.js";
 import {
   pistol,
   revolver,
@@ -26,6 +29,8 @@ const player1SB = document.querySelectorAll("#player1");
 const player2SB = document.querySelectorAll("#player2");
 const player1Modal = document.querySelector("#player1Modal");
 const player2Modal = document.querySelector("#player2Modal");
+const progressBarP1 = document.getElementById('bar1')
+const progressBarP2 = document.getElementById('bar2')
 
 // Attack and deffend button
 const attack1 = document.getElementById("attack1");
@@ -76,6 +81,10 @@ const resultBoard = () => {
   });
   player1Modal.innerText = players[0].gun.name;
   player2Modal.innerText = players[1].gun.name;
+
+  // Add value to the modal board
+  progressBarP1.style.width = `${players[0].life}%`
+  progressBarP2.style.width = `${players[1].life}%`
 };
 
 let boardMap = [];
@@ -263,10 +272,12 @@ const showBattleScreen = () => {
   enableDisableButtons();
   modalContainer.classList.add("show");
 };
+
 const getOtherPlayer = () => {
   if (currentPlayer.name === "player1") return players[1];
   else return players[0];
 };
+
 const enableDisableButtons = () => {
   if (currentPlayer.name === "player1") {
     document.getElementById("attack1").removeAttribute("disabled");
@@ -290,6 +301,7 @@ const attack = (e) => {
     enableDisableButtons();
   } else {
     // Hide battle modal, show the game over modal
+    modalContainer.classList.remove("show");
     console.log("Game over");
   }
   resultBoard();

@@ -28,6 +28,7 @@ class Player {
 
         if (this.life <= 0) {
             this.alive = false
+            this.life = 0
         }
     }
 
