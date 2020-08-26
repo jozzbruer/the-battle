@@ -27,6 +27,12 @@ const player2SB = document.querySelectorAll("#player2");
 const player1Modal = document.querySelector("#player1Modal");
 const player2Modal = document.querySelector("#player2Modal");
 
+// Attack and deffend button
+const attack1 = document.getElementById("attack1");
+const attack2 = document.getElementById("attack2");
+const deffence1 = document.getElementById("deffence1");
+const deffence2 = document.getElementById("deffence2");
+
 const rows = 10;
 const cols = 10;
 
@@ -249,7 +255,11 @@ const checkBattleMode = () => {
 
 const showBattleScreen = () => {
   //disable key press event
-  //   document.addEventListener("keydown", disableKeyPress);
+  // document.addEventListener("keydown", disableKeyPress);
+  attack1.addEventListener("click", attack);
+  attack2.addEventListener("click", attack);
+  deffence1.addEventListener("click", defend);
+  deffence2.addEventListener("click", defend);
   enableDisableButtons();
   modalContainer.classList.add("show");
 };
@@ -259,19 +269,20 @@ const getOtherPlayer = () => {
 };
 const enableDisableButtons = () => {
   if (currentPlayer.name === "player1") {
-    document.getElementById("attack1").setAttribute("disabled", false);
+    document.getElementById("attack1").removeAttribute("disabled");
     document.getElementById("attack2").setAttribute("disabled", true);
-    document.getElementById("deffence1").setAttribute("disabled", false);
+    document.getElementById("deffence1").removeAttribute("disabled");
     document.getElementById("deffence2").setAttribute("disabled", true);
   } else {
-    document.getElementById("attack2").setAttribute("disabled", false);
+    document.getElementById("attack2").removeAttribute("disabled");
     document.getElementById("attack1").setAttribute("disabled", true);
-    document.getElementById("deffence2").setAttribute("disabled", false);
+    document.getElementById("deffence2").removeAttribute("disabled");
     document.getElementById("deffence1").setAttribute("disabled", true);
   }
 };
 
-const attack = () => {
+const attack = (e) => {
+  console.log("attack");
   let otherPlayer = getOtherPlayer();
   otherPlayer.takeLife(currentPlayer.gun.damage);
   if (otherPlayer.alive) {
@@ -281,12 +292,14 @@ const attack = () => {
     // Hide battle modal, show the game over modal
     console.log("Game over");
   }
+  resultBoard();
 };
 
-const defend = () => {
+const defend = (e) => {
   currentPlayer.defence = true;
   switchPlayer();
   enableDisableButtons();
+  resultBoard();
 };
 const disableKeyPress = (e) => {
   e.preventDefault();
