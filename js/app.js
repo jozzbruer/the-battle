@@ -302,7 +302,8 @@ const attack = (e) => {
   } else {
     // Hide battle modal, show the game over modal
     modalContainer.classList.remove("show");
-    console.log("Game over");
+    gameOverModal.classList.add('show')
+    showWinner()
   }
   resultBoard();
 };
@@ -335,6 +336,15 @@ const handleKey = (e) => {
   }
 };
 
+// Show the winner of the battle
+
+const showWinner = () => {
+  if (players[0].alive)
+    playerWin.innerText = `${players[0].name} win the battle`
+  else
+    playerWin.innerText = `${players[1].name} win the battle`
+}
+
 generateBoard();
 draw();
 
@@ -344,13 +354,14 @@ document.addEventListener("keydown", handleKey);
  * Modal events
  */
 
-const open = document.getElementById("open");
+
 const modalContainer = document.getElementById("modal_container");
 const close = document.getElementById("close");
+const gameOverModal = document.getElementById('game-over')
+const playerWin = document.querySelector('.win')
 
-// open.addEventListener('click', () => {
-//     modalContainer.classList.add('show')
-// })
 close.addEventListener("click", () => {
-  modalContainer.classList.remove("show");
+  gameOverModal.classList.remove("show");
+  generateBoard();
+  draw();
 });

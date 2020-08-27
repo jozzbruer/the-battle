@@ -31,8 +31,6 @@ class Player {
             this.life = 0
         }
     }
-
-
 }
 
 const max_health = 100
