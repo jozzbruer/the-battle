@@ -362,6 +362,5 @@ const playerWin = document.querySelector('.win')
 
 close.addEventListener("click", () => {
   gameOverModal.classList.remove("show");
-  generateBoard();
-  draw();
+  window.location.reload(true);
 });

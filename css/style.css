@@ -191,9 +191,22 @@ ul {
 
 .p1 {
     margin-bottom: 17px;
-    background: red;
+    background-image: url("/game_assets/adventurer_swim1.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center, center;
     width: 300px;
-    height: 430px;
+    height: 330px;
+}
+
+.p2 {
+    margin-bottom: 17px;
+    background-image: url("/game_assets/soldier_swim2.png");
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    background-position: center, center;
+    width: 300px;
+    height: 330px;
 }
 
 .pbutton1 {
@@ -255,4 +268,23 @@ ul {
 .game-over.show {
     opacity: 1;
     pointer-events: auto;
+}
+
+.boxparagraph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.win {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#paragraph {
+    font-size: 60px;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    margin-top: 40px;
 }
