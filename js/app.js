@@ -351,7 +351,7 @@ draw();
 document.addEventListener("keydown", handleKey);
 
 /**
- * Modal events
+ * Modal events using Jquery
  */
 
 
