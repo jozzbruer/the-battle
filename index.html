@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Board Game</title>
-  </head>
 
-  <body>
-    <div class="main">
-      <div id="board" class="board">
-        <!-- <div class="box free"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="This project is my 6th project in the Front-End Developer path on." />
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="https://board-game-in-java-script.vercel.app/" />
+  <meta name="twitter:title" content="Board Game" />
+  <meta name="twitter:description" content="This project is my 6th project in the Front-End Developer path on" />
+  <meta name="twitter:creator" content="Joz-Bruer Quince" />
+  <!-- Twitter Summary card images must be at least 200x200px -->
+  <meta name="twitter:image" content="./screen1.PNG" />
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Board game" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://board-game-in-java-script.vercel.app/" />
+  <meta property="og:image" content="./screen1.PNG" />
+  <meta property="og:description" content="This project is my 6th project in the Front-End Developer path on" />
+  <meta property="og:site_name" content="https://board-game-in-java-script.vercel.app/" />
+  <meta property="fb:admins" content="Facebook numeric ID" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Board Game</title>
+</head>
+
+<body>
+  <div class="main">
+    <div id="board" class="board">
+      <!-- <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div>
@@ -101,88 +118,85 @@
             <div class="box free"></div>
             <div class="box free"></div>
             <div class="box free"></div> -->
+    </div>
+
+    <div class="score-board">
+      <div class="score-board-text">
+        <ul>
+          <li>Name: <span id="player1"></span></li>
+          <li>Weapon: <span id="player1"></span></li>
+          <li>Life: <span id="player1"></span></li>
+          <li>Weapon Damage:<span id="player1"></span></li>
+        </ul>
+      </div>
+      <div class="score-board-text">
+        <ul>
+          <li>Name: <span id="player2"></span></li>
+          <li>Weapon: <span id="player2"></span></li>
+          <li>Life: <span id="player2"></span></li>
+          <li>Weapon Damage:<span id="player2"></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- <button id="open">click me here</button> -->
+
+  <div class="modal-container" id="modal_container">
+    <div class="modal">
+      <!-- <button id="close"><i class="fa fa-times" aria-hidden="true"></i></button> -->
+      <div class="player-jauge">
+        <div class="progress">
+          <div class="bar" id="bar1">
+            <p class="playername">Player 1</p>
+          </div>
+        </div>
+        <div class="progress">
+          <div class="bar" id="bar2">
+            <p class="playername">Player 2</p>
+          </div>
+        </div>
+      </div>
+      <div class="gunname">
+        <p>Weapon: <span id="player1Modal"></span></p>
+        <p>Weapon: <span id="player2Modal"></span></p>
       </div>
 
-      <div class="score-board">
-        <div class="score-board-text">
-          <ul>
-            <li>Name: <span id="player1"></span></li>
-            <li>Weapon: <span id="player1"></span></li>
-            <li>Life: <span id="player1"></span></li>
-            <li>Weapon Damage:<span id="player1"></span></li>
-          </ul>
+      <div class="playersbox">
+        <div class="boxp1">
+          <div class="p1"></div>
+          <div class="pbutton1">
+            <button id="attack1">Attack</button>
+            <button id="deffence1">Defend</button>
+          </div>
         </div>
-        <div class="score-board-text">
-          <ul>
-            <li>Name: <span id="player2"></span></li>
-            <li>Weapon: <span id="player2"></span></li>
-            <li>Life: <span id="player2"></span></li>
-            <li>Weapon Damage:<span id="player2"></span></li>
-          </ul>
+
+        <div class="boxp2">
+          <div class="p2"></div>
+          <div class="pbutton1">
+            <button id="attack2">Attack</button>
+            <button id="deffence2">Defend</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- <button id="open">click me here</button> -->
-
-    <div class="modal-container" id="modal_container">
-      <div class="modal">
-        <!-- <button id="close"><i class="fa fa-times" aria-hidden="true"></i></button> -->
-        <div class="player-jauge">
-          <div class="progress">
-            <div class="bar" id="bar1">
-              <p class="playername">Player 1</p>
-            </div>
-          </div>
-          <div class="progress">
-            <div class="bar" id="bar2">
-              <p class="playername">Player 2</p>
-            </div>
-          </div>
-        </div>
-        <div class="gunname">
-          <p>Weapon: <span id="player1Modal"></span></p>
-          <p>Weapon: <span id="player2Modal"></span></p>
-        </div>
-
-        <div class="playersbox">
-          <div class="boxp1">
-            <div class="p1"></div>
-            <div class="pbutton1">
-              <button id="attack1">Attack</button>
-              <button id="deffence1">Defend</button>
-            </div>
-          </div>
-
-          <div class="boxp2">
-            <div class="p2"></div>
-            <div class="pbutton1">
-              <button id="attack2">Attack</button>
-              <button id="deffence2">Defend</button>
-            </div>
-          </div>
-        </div>
+  <div class="game-over" id="game-over">
+    <div class="over-modal">
+      <!-- <button id="close"><i class="fa fa-times" aria-hidden="true"></i></button> -->
+      <div class="boxparagraph">
+        <!-- <p id="paragraph">Game Over</p> -->
+        <img src="./game_assets/game_over_PNG57.png" alt="game-over" height="170" />
+        <br />
       </div>
+      <p id="paragraph" class="win"></p>
+      <button id="close" class="attack">Replay</button>
     </div>
+  </div>
+</body>
+<script src="https://use.fontawesome.com/31bf896b0b.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script type="module" src="js/app.js"></script>
 
-    <div class="game-over" id="game-over">
-      <div class="over-modal">
-        <!-- <button id="close"><i class="fa fa-times" aria-hidden="true"></i></button> -->
-        <div class="boxparagraph">
-          <!-- <p id="paragraph">Game Over</p> -->
-          <img
-            src="./game_assets/game_over_PNG57.png"
-            alt="game-over"
-            height="170"
-          />
-          <br />
-        </div>
-        <p id="paragraph" class="win"></p>
-        <button id="close" class="attack">Replay</button>
-      </div>
-    </div>
-  </body>
-  <script src="https://use.fontawesome.com/31bf896b0b.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-  <script type="module" src="js/app.js"></script>
 </html>
