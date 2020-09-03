@@ -215,9 +215,9 @@ ul {
 }
 
 #close {
-
-
-    margin: 1px;
+    margin-top: 60px;
+    margin-left: 450px;
+    /* justify-items: center; */
 }
 
 .attack {

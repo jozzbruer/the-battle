@@ -5,10 +5,7 @@
  ** Realease Date:
  ** Licence: MIT
  */
-import {
-  player1,
-  player2
-} from "./player.class.js";
+import { player1, player2 } from "./player.class.js";
 import {
   pistol,
   revolver,
@@ -29,8 +26,8 @@ const player1SB = document.querySelectorAll("#player1");
 const player2SB = document.querySelectorAll("#player2");
 const player1Modal = document.querySelector("#player1Modal");
 const player2Modal = document.querySelector("#player2Modal");
-const progressBarP1 = document.getElementById('bar1')
-const progressBarP2 = document.getElementById('bar2')
+const progressBarP1 = document.getElementById("bar1");
+const progressBarP2 = document.getElementById("bar2");
 
 // Attack and deffend button
 const attack1 = document.getElementById("attack1");
@@ -83,8 +80,8 @@ const resultBoard = () => {
   player2Modal.innerText = players[1].gun.name;
 
   // Add value to the modal board
-  progressBarP1.style.width = `${players[0].life}%`
-  progressBarP2.style.width = `${players[1].life}%`
+  progressBarP1.style.width = `${players[0].life}%`;
+  progressBarP2.style.width = `${players[1].life}%`;
 };
 
 let boardMap = [];
@@ -270,7 +267,7 @@ const showBattleScreen = () => {
   deffence1.addEventListener("click", defend);
   deffence2.addEventListener("click", defend);
   enableDisableButtons();
-  modalContainer.classList.add("show");
+  modalContainer.addClass("show"); // Jquery Syntax
 };
 
 const getOtherPlayer = () => {
@@ -301,9 +298,9 @@ const attack = (e) => {
     enableDisableButtons();
   } else {
     // Hide battle modal, show the game over modal
-    modalContainer.classList.remove("show");
-    gameOverModal.classList.add('show')
-    showWinner()
+    modalContainer.removeClass("show"); // Jquery Syntax
+    gameOverModal.addClass("show"); //Jquery Syntax
+    showWinner();
   }
   resultBoard();
 };
@@ -339,28 +336,27 @@ const handleKey = (e) => {
 // Show the winner of the battle
 
 const showWinner = () => {
-  if (players[0].alive)
-    playerWin.innerText = `${players[0].name} win the battle`
-  else
-    playerWin.innerText = `${players[1].name} win the battle`
-}
+  if (players[0].alive) playerWin.text(`${players[0].name} win the battle`);
+  // Jquery Syntax
+  else playerWin.text(`${players[1].name} win the battle`); // Jquery Syntax
+};
 
 generateBoard();
 draw();
 
+// Move the players
 document.addEventListener("keydown", handleKey);
 
 /**
  * Modal events using Jquery
  */
 
+const modalContainer = $("#modal_container"); //Jquery Syntax
+const replay = $("#close");
+const gameOverModal = $("#game-over");
+const playerWin = $(".win");
 
-const modalContainer = document.getElementById("modal_container");
-const close = document.getElementById("close");
-const gameOverModal = document.getElementById('game-over')
-const playerWin = document.querySelector('.win')
-
-close.addEventListener("click", () => {
-  gameOverModal.classList.remove("show");
-  window.location.reload(true);
+replay.on("click", () => {
+  gameOverModal.removeClass("show");
+  location.reload();
 });
